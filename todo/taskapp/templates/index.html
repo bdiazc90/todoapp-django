@@ -24,9 +24,20 @@
         <ul class="list-group shadow">
         {% for task in tasks %}
         <li class="list-group-item">
-            <a class="list-group-item-action" href="">
-                {{ task.name }}
-            </a>
+            <div class="row p-0 align-items-center">
+                <div class="col-9">
+                    <a class="list-group-item-action fs-5" href="">
+                        {{ task.name }}
+                    </a>
+                    <br>
+                    <small class="text-muted ps-3">Hace {{ task.created_at | timesince }}</small>
+                </div>
+                <div class="col-3 text-end">
+                    <a class="btn btn-sm btn-success fw-bold" href="">&check;</a>
+                    <a class="btn btn-sm btn-danger fw-bold" href="">&times;</a>
+                </div>
+            </div>
+            
         </li>
         {% endfor %}
         </ul>
