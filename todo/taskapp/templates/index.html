@@ -21,5 +21,14 @@
             </form>
         </div>
         <hr>
+        <ul class="list-group shadow">
+        {% for task in tasks %}
+        <li class="list-group-item">
+            <a class="list-group-item-action" href="">
+                {{ task.name }}
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
 </body>
 </html>

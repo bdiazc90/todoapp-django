@@ -6,7 +6,11 @@ from .models import Task
 # Create your views here.
 class IndexView(View):
     def get(self, request):
-        return render(request, "index.html")    
+        tasks = Task.objects.all()
+        context = {
+            "tasks": tasks
+        }
+        return render(request, "index.html", context)
 
     def post(self, request):
         task_name = request.POST['task_name']
