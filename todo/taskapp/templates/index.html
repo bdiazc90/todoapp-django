@@ -23,7 +23,7 @@
         <hr>
         <ul class="list-group shadow">
         {% for task in tasks %}
-        <li class="list-group-item">
+        <li class="list-group-item {% if task.done_at != None %} list-group-item-success {% endif %}">
             <div class="row p-0 align-items-center">
                 <div class="col-9">
                     <a class="list-group-item-action fs-5" href="">
@@ -33,7 +33,9 @@
                     <small class="text-muted ps-3">Hace {{ task.created_at | timesince }}</small>
                 </div>
                 <div class="col-3 text-end">
-                    <a class="btn btn-sm btn-success fw-bold" href="">&check;</a>
+                    {% if task.done_at == None %}
+                    <a class="btn btn-sm btn-success fw-bold" href="/done/{{ task.id }}">&check;</a>
+                    {% endif %}
                     <a class="btn btn-sm btn-danger fw-bold" href="">&times;</a>
                 </div>
             </div>

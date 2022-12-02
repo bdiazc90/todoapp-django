@@ -15,6 +15,10 @@ class Task(models.Model):
         self.updated_at = timezone.now()
         return super(Task, self).save(*args, **kwargs)
 
+    def done(self):
+        self.done_at = timezone.now()
+        return self.save()
+
     class Meta:
         db_table = "task"
 

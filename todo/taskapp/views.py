@@ -19,3 +19,10 @@ class IndexView(View):
             task.save()
             return redirect("index")
         return HttpResponse("Empty task")
+
+def task_done(request, id):
+    task = Task.objects.get(id=id)
+    if not task == None:
+        task.done()
+        return redirect("index")
+    return HttpResponse("Empty task")
