@@ -31,6 +31,9 @@
                     </a>
                     <br>
                     <small class="text-muted ps-3">Hace {{ task.created_at | timesince }}</small>
+                    {% if task.done_at != None %}
+                    <small class="text-muted ps-3">&check; Completado hace {{ task.done_at | timesince }}</small>
+                    {% endif %}
                 </div>
                 <div class="col-3 text-end">
                     {% if task.done_at == None %}
