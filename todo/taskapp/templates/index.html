@@ -8,6 +8,33 @@
     <title>Task App</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Taskapp</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-expand">
+                        <a href="profile/" class="btn btn-link">
+                            {{ request.user.first_name | title }}
+                        </a>
+                        <a href="logout/" class="btn btn-outline-danger">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="d-block" style="height: 40px;"></div>
+    </header>
     <div class="container-sm mt-5">
         <h1 class="display-3">Todo App</h1>
         <hr>
@@ -42,9 +69,19 @@
                     <a class="btn btn-sm btn-danger fw-bold" href="">&times;</a>
                 </div>
             </div>
-            
+            <div class="row">
+                <div class="col-6">
+                    {% if task.user %}
+                    {{ task.user.first_name | title }}
+                    {% endif %}
+                </div>
+                <div class="col-6">
+                    ---
+                </div>
+            </div>
         </li>
         {% endfor %}
         </ul>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </html>

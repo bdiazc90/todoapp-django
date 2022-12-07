@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Task(models.Model):
@@ -8,6 +9,7 @@ class Task(models.Model):
     done_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField()
     deleted_at = models.DateTimeField(null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
